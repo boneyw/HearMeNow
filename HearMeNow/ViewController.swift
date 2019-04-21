@@ -58,6 +58,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
             if(Error == nil)
             {
                 soundPLayer.delegate = self
+                soundPLayer.enableRate = true
+                soundPLayer.rate = 0.5
                 soundPLayer.play()
             }
             else {
