@@ -87,7 +87,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         
         soundPath = "/(NSTemporaryDirectory())hearmenow.wav"
     
-        let url  = NSURL(fileURLWithPath: soundPath!)
+        _  = NSURL(fileURLWithPath: soundPath!)
+        //not worrking at this point
 
         session = AVAudioSession.sharedInstance()
         
@@ -97,13 +98,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         
         try? AVAudioSession.sharedInstance().setCategory( .playAndRecord, mode: .default, options: [])
         
+         //let soundRecorder = try AVAudioRecorder(URL: getFileURL(), settings: recordSettings)
         
-        let soundRecorder = AVAudioRecorder(contentsOf: url as URL)
+        
+        //let soundRecorder = AVAudioRecorder(contentsOf: url as URL)
 
         
         if(Error.self != nil)
         {
-            print("Error initializing the recorder: \(Error.self ?? <#default value#>)")
+            print("Error initializing the recorder: \(String(describing: Error.self))")
         }
         soundRecorder?.delegate = self
         soundRecorder?.prepareToRecord()
